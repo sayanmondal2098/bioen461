@@ -9,12 +9,11 @@ void setup()
 
 void loop() 
 { 
-  //average over a 
   int samples[21];
   int sum = 0;
   for(int i = 0; i < 21; i = i+1){
     samples[i] = analogRead(A0);
-    sum = sum+ analogRead(A0);
+    sum = sum + samples[i];
   }
   float avg = sum/20.0;
   int mvc = 400;
