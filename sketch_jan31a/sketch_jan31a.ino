@@ -4,21 +4,27 @@ const int threshValue = 250;
 void setup() 
 { 
   myservo.attach(9);
-  Serial.begin(9600);
+  Serial.begin(19200);
 } 
 
 void loop() 
 { 
   int samples[21];
   int sum = 0;
+  int max = 0;
   for(int i = 0; i < 21; i = i+1){
 //    samples[i] = analogRead(A0);
-    sum += analogRead(A3);
+    int a = analogRead(A0);
+    if (a > max){
+        max = a;
+    }
+    sum += a;
+    
   }
   
   float avg = sum/20.0;
-  int mvc = 10;
-  avg = avg / mvc;
+  //int mvc = 10;
+  avg = avg / 10;
   
   if(avg > 16)
   { 
