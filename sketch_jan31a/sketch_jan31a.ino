@@ -4,7 +4,7 @@ const int threshValue = 250;
 void setup() 
 { 
   myservo.attach(9);
-  Serial.begin(19200);
+  Serial.begin(9600);
 } 
 
 void loop() 
