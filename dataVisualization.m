@@ -1,19 +1,32 @@
 dataLarry = xlsread('sampleData_Larry');
 
 figure()
-subplot(3,1,1)
-plot(dataLarry(:,1), dataLarry(:,2),'r', 'linewidth',1.5)
-title('Brachioradialis Trial 1')
+% subplot(3,1,1)
+% normalizedData = 5 .* dataLarry(:,2) ./ 1023;
+% plot(dataLarry(:,1), normalizedData,'b', 'linewidth',1.5)
+% title('Brachioradialis Trial 1')
 
-subplot(3,1,2)
-plot(dataLarry(:,3), dataLarry(:,4),'r', 'linewidth',1.5)
-title('Brachioradialis Trial 2')
+% subplot(3,1,2)
 
-subplot(3,1,3)
-plot(dataLarry(:,5), dataLarry(:,6),'r', 'linewidth',1.5)
-title('Brachioradialis Trial 3')
-xlabel('data point (nth)', 'fontsize', 12)
+normalizedData = 5 .* dataLarry(:,4) ./ 1023;
+dataAct = find(normalizedData > 0.2);
+count = 0;
+t1 = [3246 4330 7430 8583 12929 13840];
+v1 = normalizedData(t1);
+plot(dataLarry(:,3), normalizedData,'b'), hold on
+plot(dataLarry(:,3), 0.2 * ones(length(dataLarry(:,3)), 1), 'r')
+vline(dataLarry(t1,3))
+set(gca,'color','black')
+title('Brachioradialis')
+xlabel('Time (s)') 
+ylabel('Voltage (V)')
 
+% subplot(3,1,3)
+% normalizedData = 5 .* dataLarry(:,6) ./ 1023;
+% plot(dataLarry(:,5), normalizedData,'b', 'linewidth',1.5)
+% title('Brachioradialis Trial 3')
+% xlabel('data point (nth)', 'fontsize', 12)
+% 
 
 %% 
 dataEric = xlsread('sampleData_Eric');
